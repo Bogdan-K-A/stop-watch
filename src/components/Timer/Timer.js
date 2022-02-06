@@ -21,10 +21,12 @@ const Timer = () => {
           <button type="batton" onClick={handleStart}>
             Start
           </button>
-        ) : (isPaused ? 
+        ) : isPaused ? (
           <button type="batton" onClick={handlePause}>
             Pause
-          </button> : <button type="batton" onClick={handleResume}>
+          </button>
+        ) : (
+          <button type="batton" onClick={handleResume}>
             Resume
           </button>
         )}
