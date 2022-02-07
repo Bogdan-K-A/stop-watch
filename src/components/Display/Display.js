@@ -15,10 +15,6 @@ const Display = ({ time }) => {
       <span className={s.Field}>
         {('0' + Math.floor((time / 100) % 60)).slice(-2)}
       </span>
-      &nbsp;:&nbsp;
-      <span className={s.Field}>
-        {('0' + Math.floor(time % 100)).slice(-2)}
-      </span>
     </div>
   )
 }
