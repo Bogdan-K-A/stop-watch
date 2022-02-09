@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { interval, Subject } from 'rxjs'
-import { takeUntil } from 'rxjs/operators'
+import { interval, Subject, fromEvent, takeUntil, buffer } from 'rxjs'
+// import {  } from 'rxjs/operators'
 import Buttonst from './components/Buttonst/Buttonst'
-import { Container } from './components/container/Container'
 import Display from './components/Display/Display'
+import { Container } from './components/container/Container'
 
 const App = () => {
   const [time, setTime] = useState(0)
@@ -11,7 +11,6 @@ const App = () => {
 
   useEffect(() => {
     const onsubscribe = new Subject()
-    console.log('Отработал useEffect')
 
     interval(10)
       .pipe(takeUntil(onsubscribe))
@@ -29,36 +28,36 @@ const App = () => {
   const handleStart = () => {
     setWatchOn((prevState) => {
       if (prevState) {
-        console.log('stop')
         setTime(0)
         return
       }
-      console.log('start')
       return !prevState
     })
   }
 
-  const handelWait = () => {
-    if (time !== 0) {
-      console.log('wait')
-      setWatchOn(false)
-    }
+  const handelWait = (e) => {
+    const clicks = fromEvent(e.target, 'click')
+    let scissor = interval(300)
+    const result = clicks.pipe(buffer(scissor))
 
-    //   .buffer(() => throttle(250))
-    //   .map((arr) => arr.length)
-    //   .filter((len) => len === 2)
+    result.subscribe((v) => {
+      if (v.length === 2) {
+        console.log('double click')
+        if (time !== 0) {
+          setWatchOn(false)
+        }
+      }
+    })
   }
 
   const handlerReset = () => {
     setWatchOn((prevState) => {
       if (prevState) {
-        console.log('reset')
+        // console.log('reset')
         setTime(0)
         return prevState
       }
     })
-
-    setTime(0)
   }
 
   return (
