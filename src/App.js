@@ -26,6 +26,7 @@ const App = () => {
 
   const handleStart = () => {
     setWatchOn((prevState) => {
+      console.log(prevState)
       if (prevState) {
         setTime(0)
         return
@@ -36,7 +37,7 @@ const App = () => {
 
   const handelWait = (e) => {
     const clicks = fromEvent(e.target, 'click')
-    let scissor = interval(300)
+    const scissor = interval(300)
     const result = clicks.pipe(buffer(scissor))
 
     result.subscribe((v) => {

@@ -9,7 +9,23 @@ body {
   color: #396;
   font-weight: 100;
   font-size: 40px;
-  margin: 40px 0px 20px;
+  margin-top: 40px;
   border-radius: 10px;
   padding: 10px 30px;
+  cursor: pointer;
+}
+
+.TimerBtn:hover {
+  /* color: white; */
+  /* background-color: rgb(78, 73, 73); */
+  box-shadow: 10px 5px 20px rgb(134, 134, 134);
+  transition: all 250ms ease-out;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.wrapper li {
+  margin-right: 20px;
 }

@@ -3,18 +3,24 @@ import s from './Buttons.module.css'
 
 const Buttonst = ({ start, reset, wait }) => {
   return (
-    <div>
-      <button className={s.TimerBtn} type="button" onClick={start}>
-        Start/Stop
-      </button>
+    <ul className={s.wrapper}>
+      <li>
+        <button className={s.TimerBtn} type="button" onClick={start}>
+          Start/Stop
+        </button>
+      </li>
 
-      <button className={s.TimerBtn} type="button" onClick={wait}>
-        Wait
-      </button>
-      <button className={s.TimerBtn} type="button" onClick={reset}>
-        Reset
-      </button>
-    </div>
+      <li>
+        <button className={s.TimerBtn} type="button" onClick={wait}>
+          Wait
+        </button>
+      </li>
+      <li>
+        <button className={s.TimerBtn} type="button" onClick={reset}>
+          Reset
+        </button>
+      </li>
+    </ul>
   )
 }
 
